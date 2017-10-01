@@ -1,5 +1,7 @@
+from algorithms_in_python.helpers import timer
 __author__ = 'Junior Teudjio'
 
+@timer
 def myreverse(data):
     result = []
     #handle corner case
@@ -19,7 +21,7 @@ def myreverse(data):
     return result
 
 
-
+@timer
 def myreverse_2(data):
     if len(data) == 0:
         return []
@@ -36,6 +38,7 @@ def myreverse_2(data):
 
 
 #in place version
+@timer
 def myreverse_3(data):
     if len(data) == 0:
         return []
@@ -58,20 +61,32 @@ def myreverse_3(data):
 
 
 if __name__ == '__main__':
-    print myreverse(range(10))
     myreverse(range(0))
-    myreverse(range(998))
-    # stack exceeded exception at 999 myreverse(range(999))
+    print myreverse(range(10))
+    myreverse(range(100))
+    myreverse(range(200))
+    myreverse(range(300))
+    myreverse(range(400))
+    myreverse(range(500))
+    # stack exceeded exception at 999 myreverse(range(999))   without timer decorator
     print
 
-    print myreverse_2(range(10))
+
     myreverse_2(range(0))
-    myreverse_2(range(998))
-    # stack exceeded exception at 999 myreverse_2(range(999))
+    print myreverse_2(range(10))
+    myreverse_2(range(100))
+    myreverse_2(range(200))
+    myreverse_2(range(300))
+    myreverse_2(range(400))
+    myreverse_2(range(500))
+    # stack exceeded exception at 999 myreverse_2(range(999))  without timer decorator
     print
 
-
-    print myreverse_3(range(10))
     myreverse_3(range(0))
-    myreverse_3(range(1995))
-    # stack exceeded exception at 999 myreverse_3(range(1996))
+    print myreverse_3(range(10))
+    myreverse_3(range(100))
+    myreverse_3(range(200))
+    myreverse_3(range(300))
+    myreverse_3(range(400))
+    myreverse_3(range(500))
+    # stack exceeded exception at 999 myreverse_3(range(1996))   without timer decorator
