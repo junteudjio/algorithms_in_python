@@ -12,9 +12,9 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='src',
+    name='algorithms_in_python',
     version='0.1.0',
-    description='Python packages scaffolding',
+    description='Algorithms in python',
     long_description=readme,
     author='Junior Teudjio Mbativou',
     author_email='teudjiombativou@gmail.com',
