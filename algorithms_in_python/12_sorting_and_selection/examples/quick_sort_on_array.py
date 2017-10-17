@@ -1,3 +1,5 @@
+from random import shuffle
+
 __author__ = 'Junior Teudjio'
 
 def quick_sort(l):
@@ -39,7 +41,7 @@ def quick_sort(l):
         _quick_sort(l, start, pivot_new_idx)
         _quick_sort(l, pivot_new_idx+1, end)
 
-    #TODO: add random inplace shuffle of the list "l"
+    shuffle(l)
     if len(l) < 2:
         return
     _quick_sort(l, start=0, end=len(l))
