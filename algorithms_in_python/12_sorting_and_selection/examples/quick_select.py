@@ -1,3 +1,5 @@
+from random import shuffle
+
 __author__ = 'Junior Teudjio'
 
 
@@ -42,7 +44,7 @@ def quick_select(l, k, find_largest=True):
         pivot_new_position = _partition(l, pivot, left, right)
         if pivot_new_position == k-1:
             return pivot_new_position
-        elif k < pivot_new_position:
+        elif k-1 < pivot_new_position:
             return _quick_select(l, k, left, pivot_new_position)
         else:
             return _quick_select(l, k, pivot_new_position+1, right)
@@ -51,6 +53,8 @@ def quick_select(l, k, find_largest=True):
     if len(l) == 0 or k == 0 or len(l) < k:
         return None
 
+    # shuffle the list to make sure the partition steps doesn't take 0(n) time if the list is 'almost' sorted
+    shuffle(l)
     k_smallest_idx = _quick_select(l, k, left=0, right=len(l))
     if find_largest:
         return len(l)-1 - k_smallest_idx
@@ -61,6 +65,9 @@ def find_median(l):
     return quick_select(l, len(l)//2)
 
 if __name__ == '__main__':
-    print quick_select(range(15), 1, find_largest=False)
-    print quick_select(range(15), 1, find_largest=False)
-    print find_median(range(101))
+    l = range(100)
+    print quick_select(l, 1, find_largest=False)
+    print quick_select(l, 5, find_largest=True)
+    print quick_select(l, 54, find_largest=False)
+    print quick_select(l, 1, find_largest=True)
+    print find_median(l)
