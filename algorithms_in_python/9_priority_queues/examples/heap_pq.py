@@ -5,8 +5,16 @@ __author__ = 'Junior Teudjio'
 
 #This is a min-heap
 class HeapPriorityQueue(AbstractPriorityQueue):
-    def __init__(self):
-        self._data = []
+    def __init__(self, data=()):
+        self._data = [HeapPriorityQueue._Item(key, value) for key, value in data]
+        if len(self) > 1:
+            self._min_heapify()
+
+    def _min_heapify(self):
+        deepest_non_leaf_level = self._parent(len(self)-1) #parent of the last node
+        while deepest_non_leaf_level >= 0:
+            self._downgrade(deepest_non_leaf_level)
+            deepest_non_leaf_level -= 1
 
     def _parent(self, i):
         return (i-1) // 2
@@ -76,7 +84,7 @@ class HeapPriorityQueue(AbstractPriorityQueue):
 
 
 if __name__ == '__main__':
-    pq = HeapPriorityQueue()
+    pq = HeapPriorityQueue([(90, 'maxim'), (-1, 'minim')])
     pq.add(6, 'blabla')
     pq.add(2, 'bobo')
     pq.add(4, 'bibi')
