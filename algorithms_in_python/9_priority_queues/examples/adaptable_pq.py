@@ -86,13 +86,13 @@ if __name__ == '__main__':
     pq.add(3, 'beba')
 
 
-    print pq._data
+    print pq
     print pq.min()
     print pq.remove_min()
-    print pq._data
+    print pq
     pq.remove(bibi)
-    print pq._data
+    print pq
     pq.remove(byby)
-    print pq._data
+    print pq
     pq.update(bubu, -2, 'BUBU')
-    print pq._data
+    print pq

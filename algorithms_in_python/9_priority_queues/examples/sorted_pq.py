@@ -58,9 +58,9 @@ if __name__ == '__main__':
     pq.add(3, 'beba')
 
 
-    print pq._data
+    print pq
     print pq.min()
     print pq.remove_min()
-    print pq._data
+    print pq
     print pq.min()
 

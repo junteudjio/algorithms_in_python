@@ -30,6 +30,12 @@ class AbstractPriorityQueue(object):
     def is_empty(self):
         return len(self) == 0
 
+    def __str__(self):
+        return str(self._data)
+
+    def __repr__(self):
+        str(self)
+
     @abc.abstractmethod
     def __len__(self):
         pass
