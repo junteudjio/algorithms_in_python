@@ -49,3 +49,22 @@ class AbstractTree(object):
 
     def is_empty(self):
         len(self) == 0
+
+    def depth(self, p):
+        if self.is_root(p):
+            return 0
+        return 1 + self.depth(self.parent(p))
+
+    def _height(self, p):
+        if self.is_leaf(p):
+            return 0
+        return 1 + max(self._height(child) for child in self.children(p))
+
+    def height(self, p=None):
+        if p is None:
+            p = self.root()
+        return self._height(p)
+
+
+
+
