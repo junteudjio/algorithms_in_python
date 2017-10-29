@@ -39,11 +39,12 @@ class UnsortedTableMap(MapBase):
 
     def __iter__(self):
         for item in self._table:
-            yield item._key, item._value
-    
+            yield item._key
+
     def __str__(self):
         res = []
-        for key, value in self:
+        for item in self._table:
+            key, value = item._key, item._value
             res.append( '%s -> %s'%( str(key), str(value)) )
         return ' | '.join(res)
             
