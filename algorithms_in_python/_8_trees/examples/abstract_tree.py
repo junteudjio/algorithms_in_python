@@ -85,10 +85,3 @@ class AbstractTree(object):
 
         if not self.is_empty():
             return _subtree_postorder(self.root())
-
-
-
-
-
-
-
