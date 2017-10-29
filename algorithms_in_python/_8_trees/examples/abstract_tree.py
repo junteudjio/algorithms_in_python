@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABCMeta
+from algorithms_in_python._7_linked_lists.examples.linked_list_queue import LinkedListQueue
 
 __author__ = 'Junior Teudjio'
 
@@ -85,3 +86,14 @@ class AbstractTree(object):
 
         if not self.is_empty():
             return _subtree_postorder(self.root())
+
+    def bread_first(self):
+        if self.is_empty():
+            return
+        q = LinkedListQueue()
+        q.enqueue(self.root())
+        while not q.is_empty():
+            p = q.dequeue()
+            yield p
+            for c in self.children(p):
+                q.enqueue(c)

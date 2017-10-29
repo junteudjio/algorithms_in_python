@@ -207,6 +207,10 @@ if __name__ == '__main__':
     for p in tree.postoder():
         print p.element()
 
+    print 'tree elements - bread_first :'
+    for p in tree.bread_first():
+        print p.element()
+
 
 
 
