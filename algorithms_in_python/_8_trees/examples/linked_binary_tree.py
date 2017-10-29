@@ -211,6 +211,9 @@ if __name__ == '__main__':
     for p in tree.bread_first():
         print p.element()
 
+    print 'tree elements - inorder :'
+    for p in tree.inorder():
+        print p.element()
 
 
 
