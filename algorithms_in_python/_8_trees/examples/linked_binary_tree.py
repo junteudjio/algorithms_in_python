@@ -82,9 +82,6 @@ class LinkedBinaryTree(AbstractBinaryTree):
         for p in self.positions():
             yield p
 
-    def positions(self):
-        return self.preorder()
-
 
     ##### MUTATORS #####
     def _add_root(self, element):

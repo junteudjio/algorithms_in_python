@@ -49,3 +49,7 @@ class AbstractBinaryTree(AbstractTree):
 
         if not self.is_empty():
             return _subtree_inorder(self.root())
+
+
+    def positions(self):
+        return self.inorder()
