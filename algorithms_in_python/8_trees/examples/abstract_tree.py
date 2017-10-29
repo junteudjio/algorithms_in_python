@@ -45,10 +45,10 @@ class AbstractTree(object):
         return p  is self.root()
 
     def is_leaf(self,p):
-        self.num_children(p) == 0
+        return self.num_children(p) == 0
 
     def is_empty(self):
-        len(self) == 0
+        return len(self) == 0
 
     def depth(self, p):
         if self.is_root(p):
