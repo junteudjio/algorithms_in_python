@@ -95,6 +95,16 @@ class LinkedBinaryTree(AbstractBinaryTree):
         if not self.is_empty():
             return _subtree_preoder(self.root())
 
+    def postoder(self):
+        def _subtree_postorder(p):
+            for c in self.children(p):
+                for other in _subtree_postorder(c):
+                    yield other
+            yield p
+
+        if not self.is_empty():
+            return _subtree_postorder(self.root())
+
 
 
 
@@ -199,14 +209,24 @@ if __name__ == '__main__':
     tree._add_root(2)
     print tree.is_empty()
     left = tree._add_left(tree.root(), 1)
-    right = tree._add_right(tree.root(), 3)
+    left_left = tree._add_left(left, -2)
+    left_right = tree._add_right(left, 0)
+
+    right = tree._add_right(tree.root(), 5)
+    right_left = tree._add_left(right, 3)
+    right_right = tree._add_right(right, 7)
+
     print len(tree)
     print len(tree)
     #tree._attach(left, tree, tree)
     print len(tree)
 
-    print 'tree elements :'
-    for p in tree:
+    print 'tree elements - preorder :'
+    for p in tree.preorder():
+        print p.element()
+
+    print 'tree elements - postorder :'
+    for p in tree.postoder():
         print p.element()
 
 
