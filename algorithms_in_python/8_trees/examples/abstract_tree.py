@@ -66,5 +66,29 @@ class AbstractTree(object):
         return self._height(p)
 
 
+    def preorder(self):
+        def _subtree_preoder(p):
+            yield p
+            for c in self.children(p):
+                for other in _subtree_preoder(c):
+                    yield other
+
+        if not self.is_empty():
+            return _subtree_preoder(self.root())
+
+    def postoder(self):
+        def _subtree_postorder(p):
+            for c in self.children(p):
+                for other in _subtree_postorder(c):
+                    yield other
+            yield p
+
+        if not self.is_empty():
+            return _subtree_postorder(self.root())
+
+
+
+
+
 
 
