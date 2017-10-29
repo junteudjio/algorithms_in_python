@@ -78,6 +78,26 @@ class LinkedBinaryTree(AbstractBinaryTree):
         return count
 
 
+    def __iter__(self):
+        for p in self.positions():
+            yield p
+
+    def positions(self):
+        return self.preorder()
+
+    def preorder(self):
+        def _subtree_preoder(p):
+            yield p
+            for c in self.children(p):
+                for other in _subtree_preoder(c):
+                    yield other
+
+        if not self.is_empty():
+            return _subtree_preoder(self.root())
+
+
+
+
     ##### MUTATORS #####
     def _add_root(self, element):
         if self._root is not None:
@@ -154,6 +174,8 @@ class LinkedBinaryTree(AbstractBinaryTree):
             raise ValueError('node must be leaf to allow attach operation')
         if not (type(self) is type(tree1) is type(tree2)):
             raise TypeError('trees to attach must be of type : LinkedBinaryTree')
+        if self is tree1 or self is tree2:
+            raise ValueError('all trees to attach must be different than attaching tree')
 
         self._size += (len(tree1) + len(tree2))
         if not tree1.is_empty():
@@ -161,17 +183,15 @@ class LinkedBinaryTree(AbstractBinaryTree):
             tree1._root._parent = node
 
             #kill tree1 if not self
-            if tree1 is not self:
-                tree1._root = None
-                tree1._size = 0
+            tree1._root = None
+            tree1._size = 0
         if not tree2.is_empty():
             node._right = tree2._root
             tree2._root._parent = node
 
             # kill tree2 if not self
-            if tree2 is not self:
-                tree2._root = None
-                tree2._size = 0
+            tree2._root = None
+            tree2._size = 0
 
 if __name__ == '__main__':
     tree = LinkedBinaryTree()
@@ -181,10 +201,13 @@ if __name__ == '__main__':
     left = tree._add_left(tree.root(), 1)
     right = tree._add_right(tree.root(), 3)
     print len(tree)
-    tree._delete(right)
     print len(tree)
-    tree._attach(left, tree, tree)
+    #tree._attach(left, tree, tree)
     print len(tree)
+
+    print 'tree elements :'
+    for p in tree:
+        print p.element()
 
 
 
