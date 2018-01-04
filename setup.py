@@ -5,7 +5,7 @@
 from setuptools import setup, find_packages
 
 
-with open('README.rst') as f:
+with open('README.md') as f:
     readme = f.read()
 
 with open('LICENSE') as f:
@@ -17,8 +17,8 @@ setup(
     description='Algorithms in python',
     long_description=readme,
     author='Junior Teudjio Mbativou',
-    author_email='teudjiombativou@gmail.com',
-    url='https://github.com/teudjio',
+    author_email='junteudjio@gmail.com',
+    url='https://github.com/junteudjio',
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )
